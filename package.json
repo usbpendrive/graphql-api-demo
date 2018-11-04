@@ -1,10 +1,21 @@
 {
   "name": "graphql-api-demo",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": "https://github.com/usbpendrive/graphql-api-demo",
   "author": "Fernando <ferry.fernando@gmail.com> (https://github.com/usbpendrive)",
   "license": "MIT",
+  "scripts": {
+    "start": "node build/index.js",
+    "start:ts": "ts-node src/index.ts",
+    "start:debug": "node --inspect=5858 -r ts-node/register src/index.ts",
+    "dev": "nodemon",
+    "test": "NODE_ENV=test mocha --require=ts-node/register --recursive --exit 'src/**/*.spec.ts'",
+    "compile": "rm -rf build/* && tsc",
+    "normalize": "npm run format && npm run lint",
+    "format": "prettier --write --logleve=warn 'src/**/*.ts'",
+    "lint": "tslint src/**/*.ts"
+  },
   "dependencies": {
     "@types/bcryptjs": "^2.4.1",
     "@types/graphql": "^14.0.0",
